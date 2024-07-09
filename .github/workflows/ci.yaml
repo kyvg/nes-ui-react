@@ -9,32 +9,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
-      - run: yarn install
-      - run: yarn --cwd docs install
-      - run: yarn build:docs
-      - name: Add artifact to github
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifact
-          path: docs/out
-  gh-pages:
-    needs: [ build ]
-    name: gh-pages
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-      - name: Download build
-        uses: actions/download-artifact@v4
-        with:
-          name: artifact
-          path: docs/out
-      - name: rename folder
-        run: mv docs/out public
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # default: public
+      - run: CI=true yarn install
+      - run: CI=true yarn build
+      - run: CI=true yarn build:docs

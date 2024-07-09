@@ -40,3 +40,6 @@ public/robots.txt
 public/sitemap.xml
 
 .env
+
+# npm packed
+*.tgz

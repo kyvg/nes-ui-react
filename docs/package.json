@@ -6,12 +6,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && yarn deploy",
     "lint": "next lint",
-    "predeploy": "rm -rf out",
-    "deploy": "yarn build && yarn export",
-    "postdeploy": "firebase deploy",
     "start": "next start",
+    "deploy": "mv out ../public",
     "format": "prettier --write ."
   },
   "dependencies": {
