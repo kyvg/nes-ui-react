@@ -5,15 +5,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 20.x
       - run: yarn install
       - run: yarn --cwd docs install
       - run: yarn build:docs
       - name: Add artifact to github
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: artifact
           path: docs/out
@@ -22,19 +22,19 @@ jobs:
     name: gh-pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 20.x
       - name: Download build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: artifact
           path: docs/out
       - name: rename folder
         run: mv docs/out public
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public  # default: public

@@ -6,4 +6,5 @@ module.exports = {
     // Important: return the modified config
     return config;
   },
+  output: 'export',
 };
