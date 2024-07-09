@@ -5,6 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install and build
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -12,3 +13,12 @@ jobs:
       - run: CI=true yarn install
       - run: CI=true yarn build
       - run: CI=true yarn build:docs
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
