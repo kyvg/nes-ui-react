@@ -142,7 +142,7 @@ export const ColorPaletteDemo = () => (
 
         <Br />
 
-        <Text>The whole plallete is based on the <A href="https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#NES" target="_blank">official NES color palette</A>.</Text>
+        <Text>The whole plalette is based on the <A href="https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#NES" target="_blank">official NES color palette</A>.</Text>
 
         <Heading size="medium">Named colors</Heading>
 
